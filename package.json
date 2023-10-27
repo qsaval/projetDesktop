@@ -2,8 +2,8 @@
   "name": "electron_react",
   "description": "...",
   "author": {
-    "name": "kb",
-    "email": "kill@bill.com"
+    "name": "Saval Quentin",
+    "email": "quentin.saval@hotmail.fr"
   },
   "private": true,
   "version": "0.0.17",
@@ -16,7 +16,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "electron-updater": "^5.3.0"
+    "axios": "^1.5.1",
+    "dateformat": "^5.0.3",
+    "electron-updater": "^5.3.0",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
+    "react-router-dom": "^6.17.0",
+    "sort-by": "^1.2.0",
+    "sweetalert2": "^11.7.32"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
