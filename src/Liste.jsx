@@ -72,7 +72,25 @@ export function Liste(){
                         <td>{bd.auteur}</td>
                         <td>{bd.editeur}</td>
                         <td>{bd.date_edition}</td>
-                        <td>{bd.resume}</td>
+                        <td>
+                            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#"+bd.nom_categorie+bd.id}>
+                                Resume
+                            </button>
+
+                            <div className="modal fade" id={bd.nom_categorie+bd.id}  aria-labelledby={bd.titre} aria-hidden="true">
+                                <div className="modal-dialog">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <h2 className="modal-title fs-5" id={bd.titre}>{bd.titre}</h2>
+                                        </div>
+                                        <div className="modal-body">
+                                            {bd.resume}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </td>
                         <td>{bd.prix}</td>
                         <td>{bd.stock}</td>
                         <td>{bd.nom_categorie}</td>
