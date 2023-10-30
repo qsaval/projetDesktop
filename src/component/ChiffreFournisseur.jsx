@@ -2,7 +2,7 @@ import {useFetch} from "../hooks/Fetch";
 import {Link} from "react-router-dom";
 
 export function ChiffreFournisseur(){
-    const {loading, data, error} = useFetch('http://127.0.0.1:8000/lireFournisseur.php')
+    const {loading, data, error} = useFetch('http://127.0.0.1:8001/lireCaFournisseur.php')
     return <div>
         <h2>Chiffre d'Affaire par fournisseur</h2>
         {loading && <div className="spinner-border text-primary" role="status">

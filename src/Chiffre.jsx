@@ -4,7 +4,7 @@ import {ChiffreFournisseur} from "./component/ChiffreFournisseur";
 import {useState} from "react";
 
 export function Chiffre() {
-    const {loading, data, error} = useFetch('http://127.0.0.1:8000/lireAnnee.php')
+    const {loading, data, error} = useFetch('http://127.0.0.1:8001/lireAnnee.php')
     const [annee, setAnnee] = useState(2200)
 
     const handleChange = (e) => {

@@ -1,8 +1,9 @@
 import {Input} from "./component/Input";
 import {InputDate} from "./component/InputDate";
 import {Textaera} from "./component/Textaera";
-import {Select} from "./component/Select";
+import {SelectFournisseur} from "./component/SelectFournisseur";
 import {Link, useNavigate} from "react-router-dom";
+import {SelectCategorie} from "./component/SelectCategorie";
 
 
 export function FormAjout(){
@@ -40,7 +41,8 @@ export function FormAjout(){
                 <Textaera label="resume" name="resume" value=""/>
                 <Input label="prix" name="prix" type="text" value=""/>
                 <Input label="stock" name="stock" type="number" value=""/>
-                <Select lebel="fourniseur" name="fournisseur" value="" nom="selectioner un fournisseur"/>
+                <SelectCategorie label="categorie" name="categorie" value="" url="http://127.0.0.1:8001/lireCategorie.php" nom="selectioner une categorie"/>
+                <SelectFournisseur label="fourniseur" name="fournisseur" value="" url="http://127.0.0.1:8001/lireFournisseur.php" nom="selectioner un fournisseur"/>
                 <div className="d-flex my-5">
                     <button type="submit" className="btn btn-primary me-3">Ajouter</button>
                     <Link to="/bd" className="btn btn-primary">Retour</Link>

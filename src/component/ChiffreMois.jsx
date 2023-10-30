@@ -6,7 +6,7 @@ export function ChiffreMois({annee}){
     const [loading, setLoading] = useState(true)
     const [error, setErrror] = useState(null)
     useEffect(() =>{
-        fetch('http://127.0.0.1:8000/lireMois.php?annee=' + annee.toString())
+        fetch('http://127.0.0.1:8001/lireMois.php?annee=' + annee)
             .then(r=> r.json())
             .then(data => setData(data))
             .catch((e) => setErrror(e))
@@ -26,14 +26,10 @@ export function ChiffreMois({annee}){
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{data.mois}</td>
-                        <td>{data.chiffreAffaire}</td>
-                    </tr>
-
-                {/*{data.map(m => (<tr key={m.mois}>*/}
-
-                {/*</tr>))}*/}
+                {data.map(m => (<tr key={m.mois}>
+                        <td>{m.mois}</td>
+                        <td>{m.chiffreAffaire}</td>
+                </tr>))}
                 </tbody>
             </table>
         </div>}

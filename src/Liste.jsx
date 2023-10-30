@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 
 export function Liste(){
-    const {loading, data, error} = useFetch('http://127.0.0.1:8000/lireBd.php')
+    const {loading, data, error} = useFetch('http://127.0.0.1:8001/lireBd.php')
 
     const handleClick = (e) => {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -59,6 +59,7 @@ export function Liste(){
                             <th scope="col">Resume</th>
                             <th scope="col">Prix</th>
                             <th scope="col">Stock</th>
+                            <th scope="col">Categorie</th>
                             <th scope="col">Fournisseur</th>
                             <th scope="col">Modifier</th>
                             <th scope="col">Supprimer</th>
@@ -74,6 +75,7 @@ export function Liste(){
                         <td>{bd.resume}</td>
                         <td>{bd.prix}</td>
                         <td>{bd.stock}</td>
+                        <td>{bd.nom_categorie}</td>
                         <td>{bd.nom_fourniseur}</td>
                         <td><Link to={{pathname: '/bd/modif/' + bd.id}} className="btn btn-primary">Modifier</Link></td>
                         <td><button id={bd.id} className="btn btn-primary" onClick={handleClick}>Supprimer</button></td>
