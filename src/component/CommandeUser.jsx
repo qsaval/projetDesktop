@@ -1,4 +1,3 @@
-import {ListeProduit} from './ListeProduit'
 import {useEffect, useState} from "react";
 
 
@@ -24,7 +23,6 @@ export function CommandeUser({id}){
                 <thead>
                 <tr>
                     <th scope="col">Date de la commande</th>
-                    <th scope="col">Commande</th>
                     <th scope="col">Etat</th>
                     <th scope="col">Adresse</th>
                     <th scope="col">Ville</th>
@@ -34,7 +32,6 @@ export function CommandeUser({id}){
                 <tbody>
                 {data.map(c => (<tr key={c.id}>
                     <td>{c.date_commande}</td>
-                    <td><ListeProduit value={c.id}/></td>
                     <td>{c.etat_commande}</td>
                     <td>{c.adresse_facture}</td>
                     <td>{c.ville_facture}</td>
