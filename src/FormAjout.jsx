@@ -19,13 +19,14 @@ export function FormAjout(){
             resume: new FormData(e.target).get('resume'),
             prix: new FormData(e.target).get('prix'),
             stock: parseInt(new FormData(e.target).get('stock')),
-            fournisseur_id: parseInt(new FormData(e.target).get('fournisseur'))
+            fournisseur_id: parseInt(new FormData(e.target).get('fournisseur')),
+            categorie_id: parseInt(new FormData(e.target).get('categorie'))
         }
 
-        fetch('http://127.0.0.1:8000/creerBd.php', {
+        fetch('http://127.0.0.1:8000/creerBd.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9', {
             method: "POST",
             body: JSON.stringify(bd)
-        }).then(r => r.json()).then(r => console.log(r))
+        }).then(r => r.json()).then(s => console.log(s)).catch(e => console.log(e))
         navigate('/bd')
     }
 

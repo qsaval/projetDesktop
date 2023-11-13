@@ -1,11 +1,13 @@
 html{
   height: 100%;
 }
+
 body{
   min-height: 100%;
   margin: 0;
   padding: 0;
 }
+
 h1 {
   font-size: 3em;
   line-height: 1.1;
@@ -19,7 +21,12 @@ aside{
 nav{
   color: white;
 }
+
 nav a{
   text-decoration: none;
   color: white;
+}
+
+ul{
+  list-style-type: none;
 }

@@ -2,6 +2,7 @@ import {Liste} from "./Liste";
 import {FormModif} from "./FormModif";
 import {Chiffre} from "./Chiffre";
 import {FormAjout} from "./FormAjout";
+import {Commande} from "./Commande"
 import {createBrowserRouter, NavLink, Outlet, RouterProvider, useRouteError} from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
                     }
                 ]
 
-            }
+            },
+            {
+                path: '/commande',
+                element: <Commande/>
+            },
         ]
     }
 ])
@@ -60,6 +65,7 @@ function Root(){
                     <ul>
                         <li><NavLink to="/">Acceuil</NavLink></li>
                         <li><NavLink to="/bd">Liste des Bd</NavLink></li>
+                        <li><NavLink to="/commande">Liste des commande</NavLink></li>
                     </ul>
                 </nav>
             </div>

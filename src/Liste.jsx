@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 
 export function Liste(){
-    const {loading, data, error} = useFetch('http://127.0.0.1:8001/lireBd.php')
+    const {loading, data, error} = useFetch('http://127.0.0.1:8000/lireBd.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9')
 
     const handleClick = (e) => {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -28,10 +28,10 @@ export function Liste(){
                     id: e.target.id
                 }
 
-                fetch('http://127.0.0.1:8000/suppBd.php', {
+                fetch('http://127.0.0.1:8001/suppBd.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9', {
                     method: 'DELETE',
                     body: JSON.stringify(id)
-                })
+                }).then(r => r.json()).then(s => console.log(s)).catch(e => console.log(e))
                 window.location.reload()
 
             }

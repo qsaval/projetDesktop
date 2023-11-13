@@ -3,7 +3,7 @@ import {useFetch} from "../hooks/Fetch";
 
 export function SelectCategorie({label, value, nom,name}){
     const [state, setState] = useState({value})
-    const {loading, data, error} = useFetch('http://127.0.0.1:8001/lireCategorie.php')
+    const {loading, data, error} = useFetch('http://127.0.0.1:8000/lireCategorie.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9')
 
 
     const handleChange = (e) =>{

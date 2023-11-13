@@ -9,7 +9,7 @@ import {SelectCategorie} from "./component/SelectCategorie";
 export function FormModif(){
     const {id} = useParams()
     const navigate = useNavigate()
-    const {loading, data, error} = useFetch('http://127.0.0.1:8001/lire1bd.php?id=' + id)
+    const {loading, data, error} = useFetch('http://127.0.0.1:8000/lire1bd.php?id=' + id + '&key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9')
 
     const handleSubmit = (e) => {
         let bd = {
@@ -26,7 +26,7 @@ export function FormModif(){
             fournisseur_id: parseInt(new FormData(e.target).get('fournisseur'))
         }
 
-        fetch('http://127.0.0.1:8000/modifBd.php', {
+        fetch('http://127.0.0.1:8001/modifBd.php', {
             method: "PUT",
             body: JSON.stringify(bd)
         })
