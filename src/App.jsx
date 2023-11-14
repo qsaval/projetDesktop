@@ -4,6 +4,7 @@ import {Chiffre} from "./Chiffre";
 import {FormAjout} from "./FormAjout";
 import {Commande} from "./Commande"
 import {createBrowserRouter, NavLink, Outlet, RouterProvider, useRouteError} from "react-router-dom";
+import Categorie from "./Categorie";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: '',
-                        element: <Liste/>
+                        element: <Categorie/>
                     },
                     {
                         path: 'modif/:id',

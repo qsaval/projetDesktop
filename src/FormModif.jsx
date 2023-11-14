@@ -26,7 +26,7 @@ export function FormModif(){
             fournisseur_id: parseInt(new FormData(e.target).get('fournisseur'))
         }
 
-        fetch('http://127.0.0.1:8001/modifBd.php', {
+        fetch('http://127.0.0.1:8000/modifBd.php', {
             method: "PUT",
             body: JSON.stringify(bd)
         })

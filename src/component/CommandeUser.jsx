@@ -15,7 +15,6 @@ export function CommandeUser({id}){
             .finally(() => setLoading(false))
     },[id])
 
-    console.log(data)
 
     return <div>
         {loading && <div className="spinner-border text-primary" role="status">

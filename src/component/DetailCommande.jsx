@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useFetch} from "../hooks/Fetch";
+import {length} from "localforage";
 
 const DetailCommande = ({value}) => {
     const {loading, data, error} = useFetch('http://127.0.0.1:8000/lireProduit.php?id='+value+'&key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9')
+    const [total, setTotal] = useState(0)
+
     return (
         <div>
             {loading && <div className="spinner-border text-primary" role="status">

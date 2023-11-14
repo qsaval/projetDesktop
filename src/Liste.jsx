@@ -1,10 +1,21 @@
 import {useFetch} from "./hooks/Fetch";
 import {Link} from "react-router-dom";
 import Swal from "sweetalert2";
+import {useEffect, useState} from "react";
 
 
-export function Liste(){
-    const {loading, data, error} = useFetch('http://127.0.0.1:8000/lireBd.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9')
+export function Liste({value}){
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
+
+    useEffect(() => {
+        fetch('http://127.0.0.1:8000/lireBdCat.php?id='+value+'&key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9')
+            .then((r) => r.json())
+            .then((data) => setData(data))
+            .catch((e) => setError(e))
+            .finally(setLoading(false))
+    }, [value]);
 
     const handleClick = (e) => {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -28,7 +39,7 @@ export function Liste(){
                     id: e.target.id
                 }
 
-                fetch('http://127.0.0.1:8001/suppBd.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9', {
+                fetch('http://127.0.0.1:8000/suppBd.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9', {
                     method: 'DELETE',
                     body: JSON.stringify(id)
                 }).then(r => r.json()).then(s => console.log(s)).catch(e => console.log(e))
@@ -39,11 +50,8 @@ export function Liste(){
     }
 
     return (
-        <div className="container">
-            <div className="d-flex justify-content-between mb-5">
-                <h1>Liste des bd</h1>
-                <Link to="/bd/ajout" className="btn btn-primary">Ajouter</Link>
-            </div>
+        <div className="container mt-5">
+
             {loading && <div className="spinner-border text-primary" role="status">
                 <span className="visually-hidden">Loading...</span>
             </div>}
@@ -59,7 +67,6 @@ export function Liste(){
                             <th scope="col">Resume</th>
                             <th scope="col">Prix</th>
                             <th scope="col">Stock</th>
-                            <th scope="col">Categorie</th>
                             <th scope="col">Fournisseur</th>
                             <th scope="col">Modifier</th>
                             <th scope="col">Supprimer</th>
@@ -93,7 +100,6 @@ export function Liste(){
                         </td>
                         <td>{bd.prix}</td>
                         <td>{bd.stock}</td>
-                        <td>{bd.nom_categorie}</td>
                         <td>{bd.nom_fourniseur}</td>
                         <td><Link to={{pathname: '/bd/modif/' + bd.id}} className="btn btn-primary">Modifier</Link></td>
                         <td><button id={bd.id} className="btn btn-primary" onClick={handleClick}>Supprimer</button></td>
