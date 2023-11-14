@@ -8,7 +8,6 @@ export function Commande() {
 
     const handleChange = (e) => {
         setUser(e.target.value)
-        console.log(user)
     }
 
     return (<div className="container">
