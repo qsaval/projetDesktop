@@ -56,7 +56,7 @@ export function Liste({value}){
                 <span className="visually-hidden">Loading...</span>
             </div>}
             {data && <div>
-                <table className="table table-bordered border-dark">
+                {data.length != 0 ? (<table className="table table-bordered border-dark">
                     <thead>
                         <tr>
                             <th scope="col">Titre</th>
@@ -105,7 +105,7 @@ export function Liste({value}){
                         <td><button id={bd.id} className="btn btn-primary" onClick={handleClick}>Supprimer</button></td>
                     </tr>))}
                     </tbody>
-                </table>
+                </table>):(<div></div>)}
             </div>}
             {error && <div className="alert alert-danger" role="alert">{error.toString()}</div>}
         </div>

@@ -18,7 +18,7 @@ export function ChiffreMois({annee}){
             <span className="visually-hidden">Loading...</span>
         </div>}
         {data && <div>
-            <table className="table table-bordered border-dark">
+            {data.length != 0 ? (<table className="table table-bordered border-dark">
                 <thead>
                 <tr>
                     <th scope="col">Mois</th>
@@ -31,7 +31,7 @@ export function ChiffreMois({annee}){
                         <td>{m.chiffreAffaire}</td>
                 </tr>))}
                 </tbody>
-            </table>
+            </table>) : (<div></div>)}
         </div>}
 
         {error && <div className="alert alert-danger" role="alert">{error.toString()}</div>}
