@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import DetailCommande from "./DetailCommande";
 
 
 export function CommandeUser({id}){
@@ -14,6 +15,8 @@ export function CommandeUser({id}){
             .finally(() => setLoading(false))
     },[id])
 
+    console.log(data)
+
     return <div>
         {loading && <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
@@ -23,6 +26,7 @@ export function CommandeUser({id}){
                 <thead>
                 <tr>
                     <th scope="col">Date de la commande</th>
+                    <th scope="col">Commande</th>
                     <th scope="col">Etat</th>
                     <th scope="col">Adresse</th>
                     <th scope="col">Ville</th>
@@ -32,6 +36,25 @@ export function CommandeUser({id}){
                 <tbody>
                 {data.map(c => (<tr key={c.id}>
                     <td>{c.date_commande}</td>
+                    <td>
+                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#"+c.ville_facture+c.id}>
+                            Detail
+                        </button>
+
+                        <div className="modal fade" id={c.ville_facture+c.id}  aria-labelledby="" aria-hidden="true">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h2 className="modal-title fs-5" id="">Commande</h2>
+                                    </div>
+                                    <div className="modal-body">
+                                        <DetailCommande value={c.id}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
                     <td>{c.etat_commande}</td>
                     <td>{c.adresse_facture}</td>
                     <td>{c.ville_facture}</td>
