@@ -5,6 +5,17 @@ import {length} from "localforage";
 const DetailCommande = ({value}) => {
     const {loading, data, error} = useFetch('http://127.0.0.1:8000/lireProduit.php?id='+value+'&key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9')
     const [total, setTotal] = useState(0)
+    let prix = 0
+
+    if (data != null){
+        for (var i = 0; i < data.length; i++){
+            prix = prix + Number(data[i].prix_total)
+        }
+    }
+    const arrondi = prix.toFixed(2)
+    useEffect(() => {
+        setTotal(arrondi)
+    }, []);
 
     return (
         <div>
@@ -30,6 +41,7 @@ const DetailCommande = ({value}) => {
                     </tr>))}
                     </tbody>
                 </table>
+                Total de la commande: {total}€
             </div>}
             {error && <div className="alert alert-danger" role="alert">{error.toString()}</div>}
         </div>
