@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {useFetch} from "../hooks/Fetch";
 
 const DetailCommande = ({value}) => {
+
     const {loading, data, error} = useFetch('http://127.0.0.1:8000/lireProduit.php?id='+value+'&key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9')
     const [total, setTotal] = useState(0)
     let prix = 0
 
     if (data != null){
-        for (var i = 0; i < data.length; i++){
+        for (let i = 0; i < data.length; i++){
             prix = prix + Number(data[i].prix_total)
         }
     }
@@ -18,8 +19,6 @@ const DetailCommande = ({value}) => {
         setTotal(arrondi)
     }, [arrondi]);
 
-
-
     return (
         <div>
             {loading && <div className="spinner-border text-primary" role="status">
@@ -28,12 +27,12 @@ const DetailCommande = ({value}) => {
             {data && <div>
                 <table className="table table-bordered border-dark">
                     <thead>
-                    <tr>
-                        <th scope="col">Titre</th>
-                        <th scope="col">Prix unitaire</th>
-                        <th scope="col">Quantite</th>
-                        <th scope="col">Prix</th>
-                    </tr>
+                        <tr>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Prix unitaire</th>
+                            <th scope="col">Quantite</th>
+                            <th scope="col">Prix</th>
+                        </tr>
                     </thead>
                     <tbody>
                     {data.map(bd => (<tr key={bd.id}>
