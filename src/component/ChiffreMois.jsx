@@ -1,4 +1,3 @@
-import {useFetch} from "../hooks/Fetch";
 import {useEffect, useState} from "react";
 
 export function ChiffreMois({annee}){
@@ -28,10 +27,10 @@ export function ChiffreMois({annee}){
                 <tbody>
                 {data.map(m => (<tr key={m.mois}>
                         <td>{m.mois}</td>
-                        <td>{m.chiffreAffaire}</td>
+                        <td>{m.chiffreAffaire}€</td>
                 </tr>))}
                 </tbody>
-            </table>) : (<div></div>)}
+            </table>) : (<></>)}
         </div>}
 
         {error && <div className="alert alert-danger" role="alert">{error.toString()}</div>}

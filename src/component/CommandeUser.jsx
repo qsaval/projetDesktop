@@ -61,7 +61,7 @@ export function CommandeUser({id}){
 
                 </tr>))}
                 </tbody>
-            </table>): (<div></div>)}
+            </table>): (<></>)}
         </div>}
         {error && <div className="alert alert-danger" role="alert">{error.toString()}</div>}
     </div>

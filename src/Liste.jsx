@@ -1,4 +1,3 @@
-import {useFetch} from "./hooks/Fetch";
 import {Link} from "react-router-dom";
 import Swal from "sweetalert2";
 import {useEffect, useState} from "react";
@@ -105,7 +104,7 @@ export function Liste({value}){
                         <td><button id={bd.id} className="btn btn-primary" onClick={handleClick}>Supprimer</button></td>
                     </tr>))}
                     </tbody>
-                </table>):(<div></div>)}
+                </table>):(<></>)}
             </div>}
             {error && <div className="alert alert-danger" role="alert">{error.toString()}</div>}
         </div>

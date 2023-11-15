@@ -30,3 +30,17 @@ nav a{
 ul{
   list-style-type: none;
 }
+
+nav a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+nav a:link {
+  color: white;
+}
+
+nav a:hover {
+  color: aqua;
+}
