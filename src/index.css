@@ -44,3 +44,12 @@ nav a:link {
 nav a:hover {
   color: aqua;
 }
+
+.text{
+  font-size: 10px;
+}
+
+.erreur{
+  color: red;
+  font-size: smaller;
+}

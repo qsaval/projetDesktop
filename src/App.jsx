@@ -1,4 +1,4 @@
-import {Liste} from "./Liste";
+import React from "react";
 import {FormModif} from "./FormModif";
 import {Chiffre} from "./Chiffre";
 import {FormAjout} from "./FormAjout";
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
             {
                 path: 'bd',
                 element: <div className="row">
-                    <main className="col-9">
+                    <main className="col-12">
                         <Outlet/>
                     </main>
                 </div>,
@@ -49,12 +49,12 @@ const router = createBrowserRouter([
 
 function PageError(){
     const error = useRouteError()
-    return <>
+    return (<>
         <h1>Une erreur est survenue</h1>
         <p>
             {error?.error?.toString() ?? error?.toString()}
         </p>
-    </>
+    </>)
 }
 
 function Root(){
@@ -78,7 +78,6 @@ function Root(){
 }
 
 function App() {
-
     return (<RouterProvider router={router}/>)
 }
 export default App

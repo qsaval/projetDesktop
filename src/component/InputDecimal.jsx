@@ -1,14 +1,14 @@
-import {useState} from "react";
+import React, {useState} from 'react';
 
-export function Input({label, value, name}){
+const InputDecimal = ({label, value, name}) => {
     const [state, setState] = useState(value)
     const [error, setError] = useState("")
 
     const handleChange = (e) => {
-        const regex = new RegExp('\\b[0-9A-Z]{3}([^ 0-9A-Z]|\\s)?[0-9]{4}\\b')
+        const regex = new RegExp('^\\d+(\\.\\d{1,2})?$')
         setState(e.target.value)
 
-        if (regex.test(state)){
+        if (!regex.test(state)){
             setError(label + " est mal ortographier")
         }
         else {
@@ -22,4 +22,6 @@ export function Input({label, value, name}){
         <span className="erreur">{error}</span>
         <input className="form-control" id={label} type="text" onChange={handleChange} value={state} name={name}/>
     </div>
-}
+};
+
+export default InputDecimal;

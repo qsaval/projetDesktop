@@ -43,7 +43,9 @@ const DetailCommande = ({value}) => {
                     </tr>))}
                     </tbody>
                 </table>
-                Total de la commande: {total}€
+                Total de la commande: {total}€ *
+                <br/>
+                <span className="fw-lighter text">* le total est or taxes et or frais de livraison</span>
             </div>}
             {error && <div className="alert alert-danger" role="alert">{error.toString()}</div>}
         </div>

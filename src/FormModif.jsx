@@ -5,6 +5,8 @@ import {Textaera} from "./component/Textaera";
 import {SelectFournisseur} from "./component/SelectFournisseur";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {SelectCategorie} from "./component/SelectCategorie";
+import InputDecimal from "@/component/InputDecimal";
+import InputNumber from "@/component/InputNumber";
 
 export function FormModif(){
     const {id} = useParams()
@@ -38,7 +40,7 @@ export function FormModif(){
             {loading && <div className="spinner-border text-primary" role="status">
                 <span className="visually-hidden">Loading...</span>
             </div>}
-            {data && <form onSubmit={handleSubmit} method="post">
+            {data && <form onSubmit={handleSubmit} id="modif" method="post">
                 <input type="hidden" name="id" value={data.id}/>
                 <Input label="titre" name="titre" type="text" value={data.titre}/>
                 <Input label="image" name="image"  type="text" value={data.image_bd}/>
@@ -46,8 +48,8 @@ export function FormModif(){
                 <Input label="editeur" name="editeur" type="text" value={data.editeur}/>
                 <InputDate label="date d'edition" name="date" value={data.date_edition}/>
                 <Textaera label="resume" name="resume" value={data.resume}/>
-                <Input label="prix" name="prix" type="text" value={data.prix}/>
-                <Input label="stock" name="stock" type="text" value={data.stock}/>
+                <InputDecimal label="prix" name="prix" type="text" value={data.prix}/>
+                <InputNumber label="stock" name="stock" type="text" value={data.stock}/>
                 <SelectCategorie label="categorie" name="Categorie" value={data.categorie_id} nom={data.nom_categorie}/>
                 <SelectFournisseur label="fourniseur" name="fournisseur" value={data.fournisseur_id} nom={data.nom_fourniseur}/>
                 <div className="d-flex my-5">

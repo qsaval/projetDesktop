@@ -4,6 +4,8 @@ import {Textaera} from "./component/Textaera";
 import {SelectFournisseur} from "./component/SelectFournisseur";
 import {Link, useNavigate} from "react-router-dom";
 import {SelectCategorie} from "./component/SelectCategorie";
+import InputDecimal from "@/component/InputDecimal";
+import InputNumber from "@/component/InputNumber";
 
 
 export function FormAjout(){
@@ -33,17 +35,17 @@ export function FormAjout(){
     return (
         <div className="container">
             <h1 className="mb-5">Formulaire d'ajout</h1>
-            <form onSubmit={handleSubmit} method="post">
-                <Input label="titre" name="titre" type="text" value=""/>
-                <Input label="image" name="image" type="text" value=""/>
-                <Input label="auteur" name="auteur" type="text" value=""/>
-                <Input label="editeur" name="editeur" type="text" value=""/>
+            <form onSubmit={handleSubmit} id="ajout" method="post">
+                <Input label="titre" name="titre" value=""/>
+                <Input label="image" name="image" value=""/>
+                <Input label="auteur" name="auteur" value=""/>
+                <Input label="editeur" name="editeur" value=""/>
                 <InputDate label="date d'edition" name="date" value=""/>
                 <Textaera label="resume" name="resume" value=""/>
-                <Input label="prix" name="prix" type="text" value=""/>
-                <Input label="stock" name="stock" type="number" value=""/>
-                <SelectCategorie label="categorie" name="categorie" value="" url="http://127.0.0.1:8001/lireCategorie.php" nom="selectioner une categorie"/>
-                <SelectFournisseur label="fourniseur" name="fournisseur" value="" url="http://127.0.0.1:8001/lireFournisseur.php" nom="selectioner un fournisseur"/>
+                <InputDecimal label="prix" name="prix" value=""/>
+                <InputNumber label="stock" name="stock" value=""/>
+                <SelectCategorie label="categorie" name="categorie" value="0" url="http://127.0.0.1:8001/lireCategorie.php" nom="selectioner une categorie"/>
+                <SelectFournisseur label="fourniseur" name="fournisseur" value="0" url="http://127.0.0.1:8001/lireFournisseur.php" nom="selectioner un fournisseur"/>
                 <div className="d-flex my-5">
                     <button type="submit" className="btn btn-primary me-3">Ajouter</button>
                     <Link to="/bd" className="btn btn-primary">Retour</Link>

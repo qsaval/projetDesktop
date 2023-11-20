@@ -7,6 +7,6 @@ export function Textaera({label, value, name}){
     }
     return <div className="my-3">
         <label className="form-label">{label}</label>
-        <textarea className="form-control" onChange={handleChange} value={state} name={name}></textarea>
+        <textarea className="form-control" id={label} onChange={handleChange} value={state} name={name}></textarea>
     </div>
 }
