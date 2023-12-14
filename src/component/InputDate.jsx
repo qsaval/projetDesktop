@@ -16,6 +16,7 @@ export function InputDate({label, value,name}){
     }
     return <div className="my-3">
         <label className="form-label">{label}</label>
+        <br/>
         <span className="erreur">{error}</span>
         <input className="form-control" id="date" type="date" onChange={handleChange} value={date} name={name}/>
     </div>

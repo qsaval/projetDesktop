@@ -74,7 +74,7 @@ export function Liste({value}){
                     <tbody>
                     {data.map(bd => (<tr key={bd.id}>
                         <td>{bd.titre}</td>
-                        <td>{bd.image_bd}</td>
+                        <td><img src={`http://127.0.0.1:8001/image/${bd.image_bd}`} className="image" alt={bd.image_bd}/></td>
                         <td>{bd.auteur}</td>
                         <td>{bd.editeur}</td>
                         <td>{bd.date_edition}</td>

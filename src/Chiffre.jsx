@@ -5,7 +5,7 @@ import {useState} from "react";
 
 export function Chiffre() {
     const {loading, data, error} = useFetch('http://127.0.0.1:8000/lireAnnee.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9')
-    const [annee, setAnnee] = useState(2200)
+    const [annee, setAnnee] = useState(0)
 
     const handleChange = (e) => {
         setAnnee(e.target.value)

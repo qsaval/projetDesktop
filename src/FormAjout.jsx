@@ -6,6 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {SelectCategorie} from "./component/SelectCategorie";
 import InputDecimal from "@/component/InputDecimal";
 import InputNumber from "@/component/InputNumber";
+import {InputFile} from "@/component/InputFile";
 
 
 export function FormAjout(){
@@ -14,7 +15,7 @@ export function FormAjout(){
         e.preventDefault()
         let bd = {
             titre: new FormData(e.target).get('titre'),
-            image: new FormData(e.target).get('image'),
+            image: new FormData(e.target).get('image').name,
             auteur: new FormData(e.target).get('auteur'),
             editeur: new FormData(e.target).get('editeur'),
             date_edition: new FormData(e.target).get('date'),
@@ -37,15 +38,15 @@ export function FormAjout(){
             <h1 className="mb-5">Formulaire d'ajout</h1>
             <form onSubmit={handleSubmit} id="ajout" method="post">
                 <Input label="titre" name="titre" value=""/>
-                <Input label="image" name="image" value=""/>
+                <InputFile label="image" name="image" value=""/>
                 <Input label="auteur" name="auteur" value=""/>
                 <Input label="editeur" name="editeur" value=""/>
                 <InputDate label="date d'edition" name="date" value=""/>
                 <Textaera label="resume" name="resume" value=""/>
                 <InputDecimal label="prix" name="prix" value=""/>
                 <InputNumber label="stock" name="stock" value=""/>
-                <SelectCategorie label="categorie" name="categorie" value="0" url="http://127.0.0.1:8001/lireCategorie.php" nom="selectioner une categorie"/>
-                <SelectFournisseur label="fourniseur" name="fournisseur" value="0" url="http://127.0.0.1:8001/lireFournisseur.php" nom="selectioner un fournisseur"/>
+                <SelectCategorie label="categorie" name="categorie" value="0" nom="selectioner une categorie"/>
+                <SelectFournisseur label="fourniseur" name="fournisseur" value="0" nom="selectioner un fournisseur"/>
                 <div className="d-flex my-5">
                     <button type="submit" className="btn btn-primary me-3">Ajouter</button>
                     <Link to="/bd" className="btn btn-primary">Retour</Link>

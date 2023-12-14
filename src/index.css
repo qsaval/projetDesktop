@@ -37,10 +37,6 @@ nav a {
   padding: 2px 1px 0;
 }
 
-nav a:link {
-  color: white;
-}
-
 nav a:hover {
   color: aqua;
 }
@@ -52,4 +48,13 @@ nav a:hover {
 .erreur{
   color: red;
   font-size: smaller;
+}
+
+.image{
+  width: 100px;
+  height: 150px;
+}
+
+nav a.active{
+  color: #a7c6e8;
 }

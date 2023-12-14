@@ -7,6 +7,7 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import {SelectCategorie} from "./component/SelectCategorie";
 import InputDecimal from "@/component/InputDecimal";
 import InputNumber from "@/component/InputNumber";
+import {InputFile} from "@/component/InputFile";
 
 export function FormModif(){
     const {id} = useParams()
@@ -17,7 +18,7 @@ export function FormModif(){
         let bd = {
             id: new FormData(e.target).get('id'),
             titre: new FormData(e.target).get('titre'),
-            image: new FormData(e.target).get('image'),
+            image: new FormData(e.target).get('image').name,
             auteur: new FormData(e.target).get('auteur'),
             editeur: new FormData(e.target).get('editeur'),
             date_edition: new FormData(e.target).get('date'),
@@ -28,10 +29,12 @@ export function FormModif(){
             fournisseur_id: parseInt(new FormData(e.target).get('fournisseur'))
         }
 
-        fetch('http://127.0.0.1:8000/modifBd.php', {
+        fetch('http://127.0.0.1:8000/modifBd.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9', {
             method: "PUT",
             body: JSON.stringify(bd)
         })
+            .then(r=> r.json())
+            .then(data => console.log(data))
         navigate('/bd')
     }
     return (
@@ -43,14 +46,14 @@ export function FormModif(){
             {data && <form onSubmit={handleSubmit} id="modif" method="post">
                 <input type="hidden" name="id" value={data.id}/>
                 <Input label="titre" name="titre" type="text" value={data.titre}/>
-                <Input label="image" name="image"  type="text" value={data.image_bd}/>
+                <InputFile label="image" name="image"  type="text" value={data.image_bd}/>
                 <Input label="auteur" name="auteur" type="text" value={data.auteur}/>
                 <Input label="editeur" name="editeur" type="text" value={data.editeur}/>
                 <InputDate label="date d'edition" name="date" value={data.date_edition}/>
                 <Textaera label="resume" name="resume" value={data.resume}/>
                 <InputDecimal label="prix" name="prix" type="text" value={data.prix}/>
                 <InputNumber label="stock" name="stock" type="text" value={data.stock}/>
-                <SelectCategorie label="categorie" name="Categorie" value={data.categorie_id} nom={data.nom_categorie}/>
+                <SelectCategorie label="categorie" name="categorie" value={data.categorie_id} nom={data.nom_categorie}/>
                 <SelectFournisseur label="fourniseur" name="fournisseur" value={data.fournisseur_id} nom={data.nom_fourniseur}/>
                 <div className="d-flex my-5">
                     <button type="submit" className="btn btn-primary me-3">Modifier</button>
