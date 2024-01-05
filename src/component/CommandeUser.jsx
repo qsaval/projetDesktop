@@ -54,7 +54,9 @@ export function CommandeUser({id}){
                         </div>
 
                     </td>
-                    <td>{c.etat_commande}</td>
+                    <td>{c.etat_commande == 0 ? <p>Validée</p> : c.etat_commande == 1 ?
+                        <p>En préparation</p> : c.etat_commande == 2 ? <p>En cours de livraison</p> : c.etat_commande == 3 ?
+                            <p>Livrée</p> : <p>Annulée</p>}</td>
                     <td>{c.adresse_facture}</td>
                     <td>{c.ville_facture}</td>
                     <td>{c.cp_facture}</td>

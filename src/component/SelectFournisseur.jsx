@@ -8,7 +8,6 @@ export function SelectFournisseur({label, value, nom,name}){
 
 
     const handleChange = (e) =>{
-        console.log(e.target.value)
         if (e.target.value != 0){
             setState(e.target.value)
             setErreur('')

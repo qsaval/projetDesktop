@@ -20,7 +20,7 @@ export function Liste({value}){
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
+                cancelButton: 'btn btn-danger me-3'
             },
             buttonsStyling: false
         })
@@ -42,7 +42,27 @@ export function Liste({value}){
                     method: 'DELETE',
                     body: JSON.stringify(id)
                 }).then(r => r.json()).then(s => console.log(s)).catch(e => console.log(e))
-                window.location.reload()
+
+                const alert = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-primary'
+                    },
+                    buttonsStyling: false
+                })
+
+                alert.fire({
+                    title: "Supprimer!",
+                    text: "la bd a ete supprimer avec succes.",
+                    confirmButtonColor: 'rgb(0, 120, 255)',
+                    buttonsStyling: false,
+                    icon: "success",
+                    backdrop: 'rgba(0, 109, 255, 0.4)'
+                });
+                fetch('http://127.0.0.1:8000/lireBdCat.php?id='+value+'&key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9')
+                    .then((r) => r.json())
+                    .then((data) => setData(data))
+                    .catch((e) => setError(e))
+                    .finally(setLoading(false))
 
             }
         })
