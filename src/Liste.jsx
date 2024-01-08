@@ -31,7 +31,8 @@ export function Liste({value}){
             showCancelButton: true,
             confirmButtonText: 'oui',
             cancelButtonText: 'non',
-            reverseButtons: true
+            reverseButtons: true,
+            backdrop: 'rgba(0, 109, 255, 0.4)'
         }).then((result) => {
             if (result.isConfirmed) {
                 let id ={
